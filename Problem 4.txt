@@ -1,0 +1,12 @@
+
+import java.util.*;
+import java.util.stream.*;
+public class MultipleCounter {
+    public static void main(String[] args) {
+        List numbers = Arrays.asList(1, 2, 8, 9, 12, 46, 76, 82, 15, 20, 30);
+        Map multipleCount = IntStream.rangeClosed(1, 9)
+                .boxed()
+                .collect(Collectors.toMap(i -> i, i -> numbers.stream().filter(n -> n % i == 0).count()));
+        System.out.println(multipleCount);
+    }
+}

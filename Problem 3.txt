@@ -1,0 +1,17 @@
+
+import java.util.stream.IntStream;
+public class SeriesGenerator {
+    public static void main(String[] args) {
+        int a = 5;  
+        String result = generateSeries(a);
+        System.out.println("Input a = " + a + ", then output: " + result);
+    }
+    public static String generateSeries(int a) {
+        
+        return IntStream.range(0, a)       
+                        .map(i -> 2 * i + 1) 
+                        .mapToObj(Integer::toString)  
+                        .reduce((s1, s2) -> s1 + ", " + s2) 
+                        .orElse("");
+    }
+}
